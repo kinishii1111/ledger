@@ -85,3 +85,19 @@ jules remote pull --session <id>
 - Eficiência: `Documents/.cursor/lei/LACAIOS-EFFICIENCIA.md`
 - Pós-onda local: `scripts/limpar-lacaios.sh`
 - Estado job sede: `sede fechar` se houver job; senão CHECKPOINT neste repo
+
+## CI (GitHub Actions)
+
+Workflow: `.github/workflows/ci.yml` — **só L0 offline** (install + `ledger --help` + schema + fixtures se existirem).
+Sem LLM no Actions. Sem spawn de lacaio no CI.
+
+Lacaios = máquina local / Jules nuvem via `watch-lacaios.sh` ou `jules remote new`.
+CI = rede de segurança depois do merge/PR.
+
+```bash
+# onda 3 paralelos (Kin pediu stress 3; default lei = 2)
+export PATH="/home/kin/.nvm/versions/node/v22.23.1/bin:/home/kin/.local/bin:$PATH"
+/home/kin/Documents/scripts/watch-lacaios.sh \
+  --repo /home/kin/Documents/estudo/portfolio-agentes/trabalho/ledger \
+  --agent all --worktree --once --no-baseline --max-parallel 3
+```
