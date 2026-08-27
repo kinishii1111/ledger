@@ -1,0 +1,7 @@
+# CHECKPOINT — Ledger
+
+Espelho curto. Detalhe: `../CHECKPOINT.txt` (estudo) + sede `portfolio-agentes`.
+
+**Parado em:** F1.4 feito (`eval --replay` na main). Accuracy rules baixa.
+**Próximo:** GitHub #2 (LLM live) ou #6 (CI L1 artifact).
+**Repo:** https://github.com/kinishii1111/ledger
