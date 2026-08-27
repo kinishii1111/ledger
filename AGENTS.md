@@ -7,8 +7,9 @@ Orquestrador: **Cursor** (Rick com Kin). Lacaios: **caveman** (`LACAIO.md`).
 1. **Copiar → engenharia reversa → melhorar.** Antes de inventar: clonar/ler OSS em `../scratch/` ou `labs/`, extrair o atalho, só então escrever no núcleo. Ver `ORQUESTRACAO.md` § OSS.
 2. **Útil pra agente**, não UI humana. CLI / MCP / report.
 3. **Eval > demo.** Sem score reproduzível não está pronto.
-4. **Máquina fraca:** L0/L1 local; L2 API flash + cache. Sem Ollama grande / Docker.
-5. **Async:** 1 agente = 1 branch `tarefa/*` = 1 worktree. ORDEM.md. Sem auto-merge.
+4. **Gate Kin:** cada fase valida em **1 caso do contexto real** (não só sintético). Ver `../FASES.md` Gate Kin.
+5. **Máquina fraca:** L0/L1 local; L2 API flash + cache. Sem Ollama grande / Docker.
+6. **Async:** 1 agente = 1 branch `tarefa/*` = 1 worktree. ORDEM.md. Sem auto-merge.
 
 ## Agentes
 
