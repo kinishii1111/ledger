@@ -11,7 +11,7 @@ Cursor: branch tarefa/<id> + ORDEM.md + commit (+ push se remote)
 
 - Serial miúdo: skill `kin-opencode-tarefa`
 - Paralelo ≤2 locais: `kin-lacaios` + Ownership disjunto
-- Remoto GitHub: este repo (`kinishiiADJ/ledger`) — Jules **exige** remote
+- Remoto GitHub: este repo (`kinishii1111/ledger`) — Jules **exige** remote
 - Interno sem push: `--local` (lei `ORQUESTRACAO-LOCAL.md`) — Jules não entra
 
 ```bash
@@ -43,7 +43,7 @@ Jules = **lacaio remoto em VM Google**. Não compete por RAM com OpenCode/Agy ne
 ### Pré-requisitos (Kin, one-shot)
 
 1. Conta Google + acesso Jules ([jules.google.com](https://jules.google.com)) — costuma pedir plano AI Pro/Ultra
-2. Conectar o repo **kinishiiADJ/ledger** na UI Jules
+2. Conectar o repo **kinishii1111/ledger** na UI Jules
 3. CLI: `npm i -g @google/jules` → `jules login`
 4. (Opcional Actions) secret `JULES_API_KEY` no GitHub
 
@@ -52,7 +52,7 @@ Jules = **lacaio remoto em VM Google**. Não compete por RAM com OpenCode/Agy ne
 | Passo | Quem |
 |-------|------|
 | ORDEM com Ownership + Pronto quando | Cursor |
-| `jules remote new --repo kinishiiADJ/ledger --session "…"` (colar objetivo da ORDEM) | Cursor / Kin |
+| `jules remote new --repo kinishii1111/ledger --session "…"` (colar objetivo da ORDEM) | Cursor / Kin |
 | Jules abre sessão/PR na nuvem | Jules |
 | Gate: diff Ownership, Pronto quando, merge ou bounce | Cursor |
 | Prefixo commit/PR: anotar `jules:` no título se o Jules não prefixar | gate |
@@ -62,7 +62,7 @@ Jules = **lacaio remoto em VM Google**. Não compete por RAM com OpenCode/Agy ne
 jules remote list --repo
 
 # disparar fatia (exemplo)
-jules remote new --repo kinishiiADJ/ledger --session \
+jules remote new --repo kinishii1111/ledger --session \
   "Read ORDEM on branch if any. Implement F1.4 field scorer + markdown report. Only touch paths listed. No UI. MIT-friendly; mirror doceval report shape."
 
 # depois: puxar resultado
