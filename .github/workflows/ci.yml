@@ -1,0 +1,59 @@
+# L0 — smoke offline (máquina fraca / sem LLM)
+name: ci
+
+on:
+  push:
+    branches: [main, "tarefa/**"]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  l0:
+    name: L0 smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install
+        run: pip install -e .
+
+      - name: CLI help
+        run: ledger --help
+
+      - name: Schema example
+        run: ledger schema --example | tee /tmp/schema-example.json
+
+      - name: Schema has ouro fields
+        run: |
+          python - <<'PY'
+          import sys
+          from ledger.schema import InvoiceFields
+          props = InvoiceFields.model_json_schema().get("properties", {})
+          need = {"emissor", "endereco", "valor", "vencimento"}
+          missing = need - set(props)
+          if missing:
+              print("missing", missing, file=sys.stderr)
+              sys.exit(1)
+          print("ok fields", sorted(need))
+          PY
+
+      - name: Fixtures layout (if present)
+        run: |
+          if compgen -G "fixtures/*/expected.json" > /dev/null; then
+            n=$(compgen -G "fixtures/*/expected.json" | wc -l)
+            echo "found $n golden(s)"
+            for f in fixtures/*/expected.json; do
+              python -c "import json,sys; json.load(open(sys.argv[1]))" "$f"
+            done
+          else
+            echo "no fixtures yet — skip (F1.1 pending)"
+          fi
