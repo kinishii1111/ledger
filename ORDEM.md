@@ -1,7 +1,9 @@
 # ORDEM — tarefa/f1.3-validators
 
 ## Agente
-claude
+opencode
+
+<!-- Bounce: claude sem /login → opencode -->
 
 ## Objetivo
 Validators determinísticos sobre InvoiceFields / dict (F1.3).
