@@ -23,3 +23,5 @@ ledger schema --example
 ## Status
 
 WIP Fase 1. Score E2E ainda não — não inventar número no README até `eval --replay` existir.
+
+**Backlog nativo:** [Issues](https://github.com/kinishii1111/ledger/issues) · [Milestone Fase 1](https://github.com/kinishii1111/ledger/milestone/1) · LLM: [#2](https://github.com/kinishii1111/ledger/issues/2) + [docs/LLM-PROVIDERS.md](docs/LLM-PROVIDERS.md)
