@@ -19,8 +19,14 @@ def main(argv: list[str] | None = None) -> int:
     p_schema = sub.add_parser("schema", help="Print JSON Schema of invoice fields")
     p_schema.add_argument("--example", action="store_true", help="Print example instance")
 
-    # stubs for later fatias — help already documents the roadmap
-    sub.add_parser("extract", help="(F1.2+) extract fields from a document")
+    p_extract = sub.add_parser("extract", help="Extract fields from a document")
+    p_extract.add_argument("path", help="path to .md/.txt document")
+    p_extract.add_argument(
+        "--rules",
+        action="store_true",
+        help="use offline regex/rules extractor (default when no other backend)",
+    )
+
     sub.add_parser("eval", help="(F1.4+) run eval harness")
 
     args = parser.parse_args(argv)
@@ -42,8 +48,21 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(InvoiceFields.model_json_schema(), indent=2))
         return 0
 
-    if args.cmd in {"extract", "eval"}:
-        print(f"{args.cmd}: not implemented yet (see FASES / ORDEM)", file=sys.stderr)
+    if args.cmd == "extract":
+        from ledger.parse import read_document
+        from ledger.rules import extract_rules
+
+        try:
+            text = read_document(args.path)
+            fields = extract_rules(text)
+        except (OSError, ValueError) as e:
+            print(f"extract: {e}", file=sys.stderr)
+            return 2
+        print(fields.model_dump_json(indent=2))
+        return 0
+
+    if args.cmd == "eval":
+        print("eval: not implemented yet (see FASES / ORDEM)", file=sys.stderr)
         return 2
 
     return 0
