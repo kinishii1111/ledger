@@ -1,0 +1,116 @@
+{
+  "cases": [
+    {
+      "id": "inv-01",
+      "pred": {
+        "emissor": "DE SERVIÇOS **Emissor:** Tech Solutions Ltda. **CNPJ / Endereço:** 12.345.678/0001-90 - Av. Paulista, 1000, Bela Vista, São Paulo - SP **Cliente:** Exemplo Serviços S.A. --- ### Descrição dos Serviços - Consultoria Técnica em TI: R$ 1.500,00 --- **Valor",
+        "endereco": "12.345.678/0001-90",
+        "valor": 1500.0,
+        "vencimento": ""
+      },
+      "expected": {
+        "emissor": "Tech Solutions Ltda.",
+        "endereco": "12.345.678/0001-90 - Av. Paulista, 1000, Bela Vista, São Paulo - SP",
+        "valor": 1500.0,
+        "vencimento": "2026-09-15"
+      },
+      "mismatches": [
+        {
+          "field": "emissor",
+          "expected": "Tech Solutions Ltda.",
+          "pred": "DE SERVIÇOS **Emissor:** Tech Solutions Ltda. **CNPJ / Endereço:** 12.345.678/0001-90 - Av. Paulista, 1000, Bela Vista, São Paulo - SP **Cliente:** Exemplo Serviços S.A. --- ### Descrição dos Serviços - Consultoria Técnica em TI: R$ 1.500,00 --- **Valor"
+        },
+        {
+          "field": "endereco",
+          "expected": "12.345.678/0001-90 - Av. Paulista, 1000, Bela Vista, São Paulo - SP",
+          "pred": "12.345.678/0001-90"
+        },
+        {
+          "field": "vencimento",
+          "expected": "2026-09-15",
+          "pred": ""
+        }
+      ],
+      "ok": false
+    },
+    {
+      "id": "inv-02",
+      "pred": {
+        "emissor": "# NOTA FISCAL DE PRESTAÇÃO DE SERVIÇOS **Emissor:** Logístic",
+        "endereco": "98.765.432/0001-10",
+        "valor": 4250.5,
+        "vencimento": ""
+      },
+      "expected": {
+        "emissor": "Logística Expressa do Brasil S.A.",
+        "endereco": "98.765.432/0001-10 - Rua das Flores, 500, Curitiba - PR",
+        "valor": 4250.5,
+        "vencimento": "2026-09-10"
+      },
+      "mismatches": [
+        {
+          "field": "emissor",
+          "expected": "Logística Expressa do Brasil S.A.",
+          "pred": "# NOTA FISCAL DE PRESTAÇÃO DE SERVIÇOS **Emissor:** Logístic"
+        },
+        {
+          "field": "endereco",
+          "expected": "98.765.432/0001-10 - Rua das Flores, 500, Curitiba - PR",
+          "pred": "98.765.432/0001-10"
+        },
+        {
+          "field": "vencimento",
+          "expected": "2026-09-10",
+          "pred": ""
+        }
+      ],
+      "ok": false
+    },
+    {
+      "id": "inv-03",
+      "pred": {
+        "emissor": "# INVOICE **Issuer:** Cloud Hosting Services LLC **Address /",
+        "endereco": "",
+        "valor": 0.0,
+        "vencimento": ""
+      },
+      "expected": {
+        "emissor": "Cloud Hosting Services LLC",
+        "endereco": "100 Main St, Suite 400, Austin, TX 78701",
+        "valor": 320.0,
+        "vencimento": "2026-10-01"
+      },
+      "mismatches": [
+        {
+          "field": "emissor",
+          "expected": "Cloud Hosting Services LLC",
+          "pred": "# INVOICE **Issuer:** Cloud Hosting Services LLC **Address /"
+        },
+        {
+          "field": "endereco",
+          "expected": "100 Main St, Suite 400, Austin, TX 78701",
+          "pred": ""
+        },
+        {
+          "field": "valor",
+          "expected": 320.0,
+          "pred": 0.0
+        },
+        {
+          "field": "vencimento",
+          "expected": "2026-10-01",
+          "pred": ""
+        }
+      ],
+      "ok": false
+    }
+  ],
+  "n_cases": 3,
+  "overall_accuracy": 0.0,
+  "per_field_accuracy": {
+    "emissor": 0.0,
+    "endereco": 0.0,
+    "valor": 0.6666666666666666,
+    "vencimento": 0.0
+  }
+}

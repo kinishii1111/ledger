@@ -27,7 +27,12 @@ def main(argv: list[str] | None = None) -> int:
         help="use offline regex/rules extractor (default when no other backend)",
     )
 
-    sub.add_parser("eval", help="(F1.4+) run eval harness")
+    p_eval = sub.add_parser("eval", help="run eval harness")
+    p_eval.add_argument(
+        "--replay",
+        action="store_true",
+        help="offline replay against fixtures/*/expected.json (no LLM)",
+    )
 
     args = parser.parse_args(argv)
 
@@ -62,8 +67,16 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.cmd == "eval":
-        print("eval: not implemented yet (see FASES / ORDEM)", file=sys.stderr)
-        return 2
+        if not args.replay:
+            print("eval: use --replay (only mode implemented)", file=sys.stderr)
+            return 2
+        from ledger.eval_run import main as eval_main
+
+        try:
+            return eval_main()
+        except (OSError, ValueError) as e:
+            print(f"eval: {e}", file=sys.stderr)
+            return 2
 
     return 0
 
