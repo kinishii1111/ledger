@@ -94,6 +94,8 @@ Sem LLM no Actions. Sem spawn de lacaio no CI.
 Lacaios = máquina local / Jules nuvem via `watch-lacaios.sh` ou `jules remote new`.
 CI = rede de segurança depois do merge/PR.
 
+**LLM providers (backlog F1.5):** `docs/LLM-PROVIDERS.md` — OpenRouter `:free`, Gemini, Groq; client OpenAI-compat via env.
+
 ```bash
 # onda 3 paralelos (Kin pediu stress 3; default lei = 2)
 export PATH="/home/kin/.nvm/versions/node/v22.23.1/bin:/home/kin/.local/bin:$PATH"
