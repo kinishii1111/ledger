@@ -18,6 +18,7 @@ ledger schema --example
 - Copiar OSS → engenharia reversa → núcleo mínimo (`AGENTS.md`, `ORQUESTRACAO.md`)
 - L0/L1 offline; L2 API flash + cache (máquina fraca)
 - Lacaios async + **Jules** (nuvem) — ver `ORQUESTRACAO.md`
+- **LLM multi-provider (F1.5):** OpenRouter `:free` / Gemini / Groq — ver [`docs/LLM-PROVIDERS.md`](docs/LLM-PROVIDERS.md)
 
 ## Status
 
